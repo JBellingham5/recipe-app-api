@@ -13,7 +13,6 @@ class UserModelTests(TestCase):
             email=email,
             password=password
         )
-
         self.assertEqual(user.email, email)
         self.assertTrue(user.check_password(password))
 
@@ -24,21 +23,20 @@ class UserModelTests(TestCase):
             ['Test2@Example.com', 'Test2@example.com'],
             ['TEST3@EXAMPLE.com', 'TEST3@example.com']
         ]
-        for email, excepted in sample_emails:
+        for email, expected in sample_emails:
             user = get_user_model().objects.create_user(email, 'test123')
-            self.assertEqual(user.email, excepted)
+            self.assertEqual(user.email, expected)
 
     def test_new_user_with_email_raise_error(self):
         """Test creating user without email raise a ValueError"""
         with self.assertRaises(ValueError):
-            get_user_model().objects.create_user("","test123")
+            get_user_model().objects.create_user("", "test123")
 
     def test_create_new_superuser(self):
         """Test creating a new superuser"""
         user = get_user_model().objects.create_superuser(
-            'test@exampmle.com',
+            'test@example.com',
             'test123'
         )
-
         self.assertTrue(user.is_superuser)
         self.assertTrue(user.is_staff)

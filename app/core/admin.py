@@ -3,9 +3,7 @@ Djongo admin configuration for core app
 """
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-
 from core import models
-
 
 class UserAdmin(BaseUserAdmin):
     """Define admin pages for the user model"""
@@ -18,9 +16,8 @@ class UserAdmin(BaseUserAdmin):
             {'fields': (
                 'is_active',
                 'is_staff',
-                'is_superuser'
-                )
-                }
+                'is_superuser',
+            )}
         ),
         (('Important dates'), {'fields': ('last_login',)})
     )
