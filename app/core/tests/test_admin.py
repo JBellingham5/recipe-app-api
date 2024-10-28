@@ -6,6 +6,7 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse
 from django.test import Client
 
+
 class AdminSiteTests(TestCase):
     """ Test for the Django admin modifications """
     def setUp(self):
